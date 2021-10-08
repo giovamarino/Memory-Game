@@ -2,6 +2,7 @@
 
 // random number generator
 let randomNumber = 0;
+let randomNumberStorage = [];
 
 // the first randomly generated flash + new randomly generated flashes
 // generates a new number, turns the box purple, then transparent, then pushes the number to the arr
@@ -10,7 +11,6 @@ function newButton() {
   randomNumber = Math.ceil(Math.random() * 16);
 
   document.querySelector(`.btn-${randomNumber}`).style.cssText = `
-  transition-delay: 0.25s;
   background-color: darkviolet;
 `;
 
@@ -43,7 +43,6 @@ window.onload = function () {
         document.querySelector(`.btn-${i}`).style.cssText = `
           background-color: limegreen;
       `;
-
         setTimeout(() => {
           document.querySelector(`.btn-${i}`).style.cssText = `
             transition-delay: 0.05s;
@@ -51,15 +50,41 @@ window.onload = function () {
           `;
         }, 50);
 
-        // highlight the squares
-        // for (let index = 0; index < randomNumberStorage.length; index++) {
-        //   // highlight the squares
-        // }
+        // let scoreText = document.querySelector(`.score`).innerHTML;
+        // let highScoreText =
+        //   document.querySelector(`.highScoreNumber`).innerHTML;
 
+        // change score
+        document.querySelector(`.score`).innerHTML = randomNumberStorage.length;
+
+        // change highscore
+        let score = Number(document.querySelector(`.score`).innerHTML);
+        let highScore = Number(
+          document.querySelector(`.highScoreNumber`).innerHTML
+        );
+
+        if (score > highScore) {
+          document.querySelector(`.highScoreNumber`).innerHTML =
+            document.querySelector(`.score`).innerHTML;
+          console.log(`hello`);
+        }
+
+        // Highlight each button from randomNumberStorage
+        // for (let index = 0; index < randomNumberStorage.length; index++) {
+        //   let buttonClass2 = `.btn-${index}`;
+        //   setTimeout(() => {
+        //     document.querySelector(buttonClass2).style.cssText = `
+        //       background-color: limegreen;
+        //     `;
+
+        //     console.log(randomNumberStorage[index]);
+        //     console.log(document.querySelector(`btn-${index}`));
+        //   }, 500);
+        // }
         // makes a new button after changing box colors
         setTimeout(() => {
           newButton();
-        }, 300);
+        }, 300 /*5000*/);
       }
 
       // if user clicks the WRONG box: turn box red & disable clicking
@@ -70,17 +95,33 @@ window.onload = function () {
         for (let i = 0; i < 16; i++) {
           document.querySelectorAll(`.button`)[i].style.pointerEvents = `none`;
         }
-
-        // setTimeout(() => {
-        //   document.querySelector(`.btn-${i}`).style.cssText = `
-        //     transition-delay: 0.75s;
-        //     background-color: transparent;
-        //   `;
-        // }, 750);
       }
     });
   }
   newButton();
 };
 
-let randomNumberStorage = [];
+// Reset Button
+document.querySelector(`.resetButton`).addEventListener(`click`, function () {
+  randomNumberStorage = [];
+
+  // Disables spam-clicking the reset button
+  document.querySelector(`.resetButton`).style.pointerEvents = `none`;
+  setTimeout(() => {
+    document.querySelector(`.resetButton`).style.pointerEvents = `revert`;
+  }, 1000);
+
+  document.querySelector(`.score`).innerHTML = randomNumberStorage.length;
+
+  for (let i = 0; i < 16; i++) {
+    document.querySelectorAll(`.button`)[i].style.pointerEvents = `revert`;
+  }
+
+  for (let i = 1; i < 17; i++) {
+    document.querySelector(`.btn-${i}`).style.backgroundColor = `transparent`;
+  }
+
+  setTimeout(() => {
+    newButton();
+  }, 300);
+});
