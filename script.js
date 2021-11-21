@@ -22,8 +22,6 @@ function newButton() {
     console.log(`highlight ${randomNumberStorage.length} times`);
   }
 
-  flashButton();
-
   // change score
   document.querySelector(`.score`).innerHTML = randomNumberStorage.length - 1;
 
@@ -35,6 +33,7 @@ function newButton() {
     document.querySelector(`.highScoreNumber`).innerHTML =
       document.querySelector(`.score`).innerHTML;
   }
+  flashButton();
 }
 
 function flashButton() {
@@ -83,21 +82,6 @@ window.onload = function () {
             `;
           }, 50);
 
-          // change score
-          // document.querySelector(`.score`).innerHTML =
-          //   randomNumberStorage.length;
-
-          // // change highscore
-          // let score = Number(document.querySelector(`.score`).innerHTML);
-          // let highScore = Number(
-          //   document.querySelector(`.highScoreNumber`).innerHTML
-          // );
-
-          // if (score > highScore) {
-          //   document.querySelector(`.highScoreNumber`).innerHTML =
-          //     document.querySelector(`.score`).innerHTML;
-          // }
-
           // makes a new button after changing box colors
 
           if (sequenceRepeatCurrentIndex < randomNumberStorage.length - 1) {
@@ -137,6 +121,22 @@ document.querySelector(`.resetButton`).addEventListener(`click`, function () {
   setTimeout(() => {
     document.querySelector(`.resetButton`).style.pointerEvents = `revert`;
   }, 1000);
+
+  for (let i = 0; i < 16; i++) {
+    document.querySelectorAll(`.button`)[i].style.pointerEvents = `none`;
+  }
+
+  setTimeout(() => {
+    for (let i = 0; i < 16; i++) {
+      document.querySelectorAll(`.button`)[i].style.pointerEvents = `revert`;
+    }
+  }, 10000);
+
+  // for (let i = 0; i < 16; i++) {
+  //   document.querySelectorAll(`.button`)[
+  //     i
+  //   ].style.pointerEvents = `revert`;
+  // }
 
   // Resets the score
   document.querySelector(`.score`).innerHTML = randomNumberStorage.length;
