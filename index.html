@@ -13,46 +13,51 @@
   </head>
   <body>
     <div class="wrapper">
-      <h1>Memory Game</h1>
-      <div class="resetHSWrapper">
-        <div class="resetWrapper">
-          <h3>
-            <span class="resetButton">Reset</span>
-          </h3>
+      <header>
+        <h1>Memory Game</h1>
+        <div class="resetHSWrapper">
+          <div class="resetWrapper">
+            <h3>
+              <span class="resetButton">Reset</span>
+            </h3>
+          </div>
+          <div class="highScore">
+            <h3>High Score: <span class="highScoreNumber">0</span></h3>
+          </div>
         </div>
-        <div class="highScore">
-          <h3>High Score: <span class="highScoreNumber">0</span></h3>
+      </header>
+
+      <main>
+        <div class="currentScore">
+          <h2>Score: <span class="score">0</span></h2>
         </div>
-      </div>
-      <div class="currentScore">
-        <h2>Score: <span class="score">0</span></h2>
-      </div>
-      <div class="gamePad">
-        <div class="gameRow">
-          <div tabindex="1" class="button btn-1"></div>
-          <div tabindex="2" class="button btn-2"></div>
-          <div tabindex="3" class="button btn-3"></div>
-          <div tabindex="4" class="button btn-4"></div>
+        <div class="gamePad">
+          <div class="gameRow">
+            <div tabindex="1" class="button btn-1"></div>
+            <div tabindex="2" class="button btn-2"></div>
+            <div tabindex="3" class="button btn-3"></div>
+            <div tabindex="4" class="button btn-4"></div>
+          </div>
+          <div class="gameRow">
+            <div tabindex="5" class="button btn-5"></div>
+            <div tabindex="6" class="button btn-6"></div>
+            <div tabindex="7" class="button btn-7"></div>
+            <div tabindex="8" class="button btn-8"></div>
+          </div>
+          <div class="gameRow">
+            <div tabindex="9" class="button btn-9"></div>
+            <div tabindex="10" class="button btn-10"></div>
+            <div tabindex="11" class="button btn-11"></div>
+            <div tabindex="12" class="button btn-12"></div>
+          </div>
+          <div class="gameRow">
+            <div tabindex="13" class="button btn-13"></div>
+            <div tabindex="14" class="button btn-14"></div>
+            <div tabindex="15" class="button btn-15"></div>
+            <div tabindex="16" class="button btn-16"></div>
+          </div>
         </div>
-        <div class="gameRow">
-          <div tabindex="5" class="button btn-5"></div>
-          <div tabindex="6" class="button btn-6"></div>
-          <div tabindex="7" class="button btn-7"></div>
-          <div tabindex="8" class="button btn-8"></div>
-        </div>
-        <div class="gameRow">
-          <div tabindex="9" class="button btn-9"></div>
-          <div tabindex="10" class="button btn-10"></div>
-          <div tabindex="11" class="button btn-11"></div>
-          <div tabindex="12" class="button btn-12"></div>
-        </div>
-        <div class="gameRow">
-          <div tabindex="13" class="button btn-13"></div>
-          <div tabindex="14" class="button btn-14"></div>
-          <div tabindex="15" class="button btn-15"></div>
-          <div tabindex="16" class="button btn-16"></div>
-        </div>
-      </div>
+      </main>
     </div>
     <script src="script.js"></script>
   </body>
